@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-  See spec/filterize_spec.rb for example usage.
+  See spec/filterize_spec.rb for example usage
 
 ## Contributing
 
