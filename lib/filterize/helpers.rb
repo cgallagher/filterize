@@ -13,7 +13,7 @@ module Filterize
       end
       
       # super textual insertion
-      def insert_text(text = 'Milk was a bad choice!', font_size = 15, font_path = nil, fill = 'transparent', color = '#cbfe00', stroke = 'none', gravity = 'southwest')
+      def insert_text(text = 'Milk was a bad choice!', font_size = 15, font_path = 'Helvetica', fill = 'transparent', color = '#cbfe00', stroke = 'none', gravity = 'southwest')
         convert "#{result.path} -gravity #{gravity} -stroke '#{stroke}' -strokewidth 2 -font '#{font_path}' -annotate 0 '#{text}' -stroke '#{stroke}' -fill '#{color}' -annotate 0 '#{text}' #{result.path}"
       end
       
