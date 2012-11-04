@@ -34,6 +34,8 @@ module Filterize
         convert "#{result.path} -bordercolor #{color} -border #{width}x#{width} #{result.path}"
       end
       
+      # some actual filters now
+      
       # some filter
       def lomo()
         convert "#{result.path} -channel R -level 33% -channel G -level 33% #{result.path}"
@@ -49,7 +51,7 @@ module Filterize
         convert "( \"#{result.path}\" -auto-gamma -modulate 120,50,100 )( -size {#{width}}x{#{height}} -fill rgba(255,153,0,0.5) -draw 'rectangle 0,0 {#{width}},{#{height}}' ) -compose multiply \"#{result.path}\""
       end
       
-      # totes tilts
+      # totes tilts - this one runs a bit slow - maybe 9 seconds
       def tilt_shift()
         convert "#{result.path} \\( +clone -sparse-color Barycentric '0,0 black 0,%[fx:h-1] white' -function polynomial 2,-2,0.5 \\) \ -compose Blur -set option:compose:args 15 -composite #{result.path}"
         # convert <<-CMD
@@ -57,6 +59,10 @@ module Filterize
         # ( +clone -sparse-color Barycentric '0,0 black 0,%h white' -function polynomial 4,-4,1 -level 0,50% \) \
         # -compose blur -set option:compose:args 5 -composite #{result.path}
         # CMD
+      end
+      
+      def grayscale
+        convert "#{result.path} -colorspace Gray #{result.path}"
       end
       
       private
