@@ -1,4 +1,4 @@
-require 'rmagick'
+#require 'rmagick'
 require 'tempfile'
 require 'fileutils'
 
@@ -11,6 +11,16 @@ module Filterize
         @original = file
         @result = Tempfile.new(["filterize", ".png"])
         FileUtils.cp(@original.path, @result.path)
+      end
+      
+      # super textual insertion
+      def insert_text(text = 'Milk was a bad choice!', font_size = 15, font_path = nil, fill = 'transparent', color = '#cbfe00', stroke = 'none', gravity = 'southwest')
+        convert "#{result.path} -gravity #{gravity} -stroke '#{stroke}' -strokewidth 2 -font '#{font_path}' -annotate 0 '#{text}' -stroke '#{stroke}' -fill '#{color}' -annotate 0 '#{text}' #{result.path}"
+      end
+      
+      # shake it like a polaroid pictya - rotates to a random angle between 15 and -15 - http://www.imagemagick.org/script/command-line-options.php?#polaroid
+      def polaroid(text = '', gravity = 'center', background = 'none')
+        convert "-caption '#{text}' #{result.path} -gravity #{gravity} -background '#{background}' +polaroid #{result.path}"
       end
       
       # pass an image to this guy and he will overlay it on top of the working image
@@ -40,13 +50,14 @@ module Filterize
         convert "( \"#{result.path}\" -auto-gamma -modulate 120,50,100 )( -size {#{width}}x{#{height}} -fill rgba(255,153,0,0.5) -draw 'rectangle 0,0 {#{width}},{#{height}}' ) -compose multiply \"#{result.path}\""
       end
       
-      # totes
+      # totes tilts
       def tilt_shift()
-        convert <<-CMD
-        (#{result.path} -gamma 0.75 -modulate 100,130 -contrast \) \
-        ( +clone -sparse-color Barycentric '0,0 black 0,%h white' -function polynomial 4,-4,1 -level 0,50% \) \
-        -compose blur -set option:compose:args 5 -composite #{result.path}
-        CMD
+        convert "#{result.path} \\( +clone -sparse-color Barycentric '0,0 black 0,%[fx:h-1] white' -function polynomial 2,-2,0.5 \\) \ -compose Blur -set option:compose:args 15 -composite #{result.path}"
+        # convert <<-CMD
+        # (#{result.path} -gamma 0.75 -modulate 100,130 -contrast \) \
+        # ( +clone -sparse-color Barycentric '0,0 black 0,%h white' -function polynomial 4,-4,1 -level 0,50% \) \
+        # -compose blur -set option:compose:args 5 -composite #{result.path}
+        # CMD
       end
       
       private
