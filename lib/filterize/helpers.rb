@@ -13,8 +13,8 @@ module Filterize
       end
       
       # super textual insertion
-      def insert_text(text = 'Milk was a bad choice!', font_size = 15, font_path = 'Helvetica', fill = 'transparent', color = '#cbfe00', stroke = 'none', gravity = 'southwest')
-        convert "#{result.path} -gravity #{gravity} -stroke '#{stroke}' -strokewidth 2 -font '#{font_path}' -annotate 0 '#{text}' -stroke '#{stroke}' -fill '#{color}' -annotate 0 '#{text}' #{result.path}"
+      def insert_text(text = 'Milk was a bad choice!', font_size = 15, font_path = 'Helvetica', fill = 'transparent', color = '#cbfe00', stroke = 'none', gravity = 'southwest', xy = '0', stroke_width = 0)
+        convert "#{result.path} -gravity #{gravity} -stroke '#{stroke}' -strokewidth #{stroke_width} -font '#{font_path}' -pointsize #{font_size} -annotate #{xy} '#{text}' -stroke '#{stroke}' -fill '#{color}' -annotate #{xy} '#{text}' #{result.path}"
       end
       
       # shake it like a polaroid pictya - rotates to a random angle between 15 and -15 - http://www.imagemagick.org/script/command-line-options.php?#polaroid
@@ -54,11 +54,6 @@ module Filterize
       # totes tilts - this one runs a bit slow - maybe 9 seconds
       def tilt_shift()
         convert "#{result.path} \\( +clone -sparse-color Barycentric '0,0 black 0,%[fx:h-1] white' -function polynomial 2,-2,0.5 \\) \ -compose Blur -set option:compose:args 15 -composite #{result.path}"
-        # convert <<-CMD
-        # (#{result.path} -gamma 0.75 -modulate 100,130 -contrast \) \
-        # ( +clone -sparse-color Barycentric '0,0 black 0,%h white' -function polynomial 4,-4,1 -level 0,50% \) \
-        # -compose blur -set option:compose:args 5 -composite #{result.path}
-        # CMD
       end
       
       def grayscale

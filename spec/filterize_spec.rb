@@ -8,7 +8,7 @@ describe Filterize do
     overlay_image = File.open("#{dir}/overlay.png", 'r')
     font_path = "#{dir}/fonts/petitformalscript-regular.ttf"
     #factory = Filterize::Factory.new(img).insert_text("Amagerd Farcberk", 20, font_path, 'yellow')
-    factory = Filterize::Factory.new(img).border()
+    factory = Filterize::Factory.new(img).insert_text('Boom Boom', 100, 'Helvetica', 'transparent', '#cbfe00', '#cbfe00', 'southwest', '+0+100')
     
     FileUtils.mv(factory.result.path, "/Users/chrisgallagher/Desktop/filterize.jpg")
     system "open /Users/chrisgallagher/Desktop/filterize.jpg"
