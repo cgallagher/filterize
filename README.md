@@ -16,14 +16,27 @@ Once installed you can run commands such as:
 
     dir = File.dirname(File.expand_path(__FILE__))
     img = File.open("#{dir}/borat.jpg", 'r')
-    factory = Filterize::Factory.new(img).insert_text("Very nice, I like!").overlay_image(your_image_here, 100, 100).tilt_shift
+    factory = Filterize::Factory.new(img).insert_text("Very nice, I like!").tilt_shift
     result = factory.result.path
+
+OR
+
+    dir = File.dirname(File.expand_path(__FILE__))
+    img = File.open("#{dir}/borat.jpg", 'r')
+    overlay_image = File.open("#{dir}/overlay.png", 'r')
+    font_path = "#{dir}/fonts/petitformalscript-regular.ttf"
+    factory = Filterize::Factory.new(img).overlay_image(overlay_image, 0, 0, 'center').gotham.grayscale
+    
+    
     
     
 A full list of the available helpers can be found in lib/filterize/helpers.rb
 
 To see a quick example, clone the rep and run the following command from the root directory to run the tests.
 
-  rspec spec
+    rspec spec
   
 Change the tests to make borat look different. If you see some nice filters or effects using the imagemagick convert command then add them to the helpers too. 
+
+
+
