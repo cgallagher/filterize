@@ -23,10 +23,10 @@ module Filterize
       end
       
       # pass an image to this guy and he will overlay it on top of the working image
-      def overlay_image(overlay_image, pos_x = 0, pos_y = 0)
+      def overlay_image(overlay_image, pos_x = 0, pos_y = 0, gravity = 'northwest')
         @overlay = Tempfile.new(['ol', '.png'])
         FileUtils.cp(overlay_image.path, @overlay.path)
-        convert "-composite #{result.path} #{@overlay.path} -geometry +#{pos_x}+#{pos_y} #{result.path}"
+        convert "-composite #{result.path} #{@overlay.path} -gravity #{gravity} -geometry +#{pos_x}+#{pos_y} #{result.path}"
       end      
       
       # whack a border on it yo!

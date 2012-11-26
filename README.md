@@ -1,29 +1,21 @@
-# Filterize
+#Filterize
 
-TODO: Write a gem description
+This gem will soon be renamed to something cooler but this will do for now!
 
-## Installation
+###Setup
+1). Add the following to your Gemfile
+	
+	source 'https://gems.gemfury.com/gqzpdJ9pZKzYwqcrhZ8q/'
+	gem 'filterize'
+	
+Filterize is currently running at version 0.0.6
 
-Add this line to your application's Gemfile:
+Once installed you can run commands such as:
 
-    gem 'filterize'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install filterize
-
-## Usage
-
-  See spec/filterize_spec.rb for example usage  
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+    dir = File.dirname(File.expand_path(__FILE__))
+    img = File.open("#{dir}/borat.jpg", 'r')
+    factory = Filterize::Factory.new(img).insert_text("Very nice, I like!").overlay_image(your_image_here, 100, 100).tilt_shift
+    result = factory.result.path
+    
+    
+A full list of the available helpers can be found in lib/filterize/helpers.rb
