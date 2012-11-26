@@ -21,7 +21,7 @@ Once installed you can run commands such as:
 
 
 Producing:
-    ![alt text](https://s3.amazonaws.com/dove-by-you/2.jpg "Example 1")
+    ![alt text](https://s3.amazonaws.com/dove-by-you/1.jpg "Example 1")
 
 OR
 
