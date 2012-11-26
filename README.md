@@ -19,6 +19,11 @@ Once installed you can run commands such as:
     factory = Filterize::Factory.new(img).insert_text("Very nice, I like!").tilt_shift
     result = factory.result.path
 
+
+Producing:
+
+    ![Alt text](https://github.com/Betapond/filterize/blob/master/examples/1.jpg)
+
 OR
 
     dir = File.dirname(File.expand_path(__FILE__))
@@ -27,7 +32,10 @@ OR
     font_path = "#{dir}/fonts/petitformalscript-regular.ttf"
     factory = Filterize::Factory.new(img).overlay_image(overlay_image, 0, 0, 'center').gotham.grayscale
     
-    
+Producing:
+
+  ![Alt text](https://github.com/Betapond/filterize/blob/master/examples/2.jpg)
+
     
     
 A full list of the available helpers can be found in lib/filterize/helpers.rb
