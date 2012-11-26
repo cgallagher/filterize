@@ -1,5 +1,7 @@
 #Filterize
 
+Because RMagick is fat!
+
 This gem will soon be renamed to something cooler but this will do for now!
 
 ###Setup
@@ -19,3 +21,9 @@ Once installed you can run commands such as:
     
     
 A full list of the available helpers can be found in lib/filterize/helpers.rb
+
+To see a quick example, clone the rep and run the following command from the root directory to run the tests.
+
+  rspec spec
+  
+Change the tests to make borat look different. If you see some nice filters or effects using the imagemagick convert command then add them to the helpers too. 
