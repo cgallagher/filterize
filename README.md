@@ -21,8 +21,7 @@ Once installed you can run commands such as:
 
 
 Producing:
-
-    ![Alt text](https://github.com/Betapond/filterize/blob/master/examples/1.jpg)
+    ![alt text](https://github.com/Betapond/filterize/blob/master/examples/1.jpg "Example 1")
 
 OR
 
@@ -34,7 +33,7 @@ OR
     
 Producing:
 
-  ![Alt text](https://github.com/Betapond/filterize/blob/master/examples/2.jpg)
+  ![alt text](https://github.com/Betapond/filterize/blob/master/examples/2.jpg "Example 2")
 
     
     
