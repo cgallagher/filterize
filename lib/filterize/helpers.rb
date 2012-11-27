@@ -14,7 +14,7 @@ module Filterize
       
       # super textual insertion
       def insert_text(text = 'Milk was a bad choice!', font_size = 15, font_path = 'Helvetica', fill = 'transparent', color = '#cbfe00', stroke = 'none', gravity = 'southwest', xy = '0', stroke_width = 0)
-        convert "#{result.path} -gravity #{gravity} -stroke '#{stroke}' -strokewidth #{stroke_width} -font '#{font_path}' -pointsize #{font_size} -annotate #{xy} '#{text}' -stroke '#{stroke}' -fill '#{color}' -annotate #{xy} '#{text}' #{result.path}"
+        convert "#{result.path} -gravity #{gravity} -stroke '#{stroke}' -strokewidth #{stroke_width} -font '#{font_path}' -pointsize #{font_size} -annotate #{xy} '#{text}' #{result.path}"
       end
       
       # shake it like a polaroid pictya - rotates to a random angle between 15 and -15 - http://www.imagemagick.org/script/command-line-options.php?#polaroid

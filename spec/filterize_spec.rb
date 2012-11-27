@@ -7,8 +7,8 @@ describe Filterize do
     img = File.open("#{dir}/borat.jpg", 'r')
     overlay_image = File.open("#{dir}/overlay.png", 'r')
     font_path = "#{dir}/fonts/petitformalscript-regular.ttf"
-    factory = Filterize::Factory.new(img).overlay_image(overlay_image, 0, 0, 'center').gotham.grayscale
-    #factory = Filterize::Factory.new(img).insert_text("Very nice, I like!").tilt_shift
+    #factory = Filterize::Factory.new(img).overlay_image(overlay_image, 0, 0, 'center').gotham.grayscale
+    factory = Filterize::Factory.new(img).insert_text("Very nice, I like!")
     
     
     FileUtils.mv(factory.result.path, "/Users/chrisgallagher/Desktop/filterize.jpg")
